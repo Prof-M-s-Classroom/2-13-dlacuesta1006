@@ -89,10 +89,12 @@ public:
             return;
         }
         if (index==0) {
-            return delfirst();
+            delfirst();
+            return;
         }
         if (index==length) {
-            return dellast();
+            dellast();
+            return;
         }
         Node<T> *prev= get(index-1);
         Node<T> *temp = prev -> next;
