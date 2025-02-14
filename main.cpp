@@ -129,8 +129,15 @@ public:
     }
 
    void reverselist(){
-
-
+       Node<T> prev = NULL, current = head;
+        Node<T> next = NULL;
+        while (current != NULL) {
+            next =current -> next;
+            current -> next = prev;
+            prev = current;
+            current = next;
+        }
+        head = prev;
         //TODO:Write a function to reverse the list using the logic from the slide.
     }
 
