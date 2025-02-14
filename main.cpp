@@ -129,11 +129,13 @@ public:
     }
 
    void reverselist(){
-       Node<T> prev = NULL, current = head;
-        Node<T> next = NULL;
+       Node<T>* prev = nullptr;
+        Node<T>* current =head;
+       Node<T> * next = nullptr;
+
         while (current != NULL) {
-            next =current -> next;
-            current -> next = prev;
+            next = current->next;
+            current->next =prev;
             prev = current;
             current = next;
         }
