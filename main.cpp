@@ -38,6 +38,7 @@ public:
         Node<T> *current = this->head;
         while (head) {
             head= head->next;
+            delete current->value;
             delete current;
             current = head;
         }
@@ -67,9 +68,22 @@ public:
     }
 
     void dellast() {
+        if (head == NULL) return;
+        if (head->next == NULL) {
+            delete head->value;
+            delete head;
+            head = NULL;
+            length--;
+            return;
+        }
         Node<T> *temp = head;
-        while (temp->next!=NULL)
+        Node<T> *prev = NULL;
+        while (temp->next != NULL) {
+            prev = temp;
             temp = temp->next;
+        }
+        prev->next = NULL;
+        delete temp->value;
         delete temp;
         length--;
     }
@@ -130,8 +144,8 @@ public:
 
    void reverselist(){
        Node<T>* prev = nullptr;
-        Node<T>* current =head;
-       Node<T> * next = nullptr;
+        Node<T>* current = head;
+       Node<T>* next = nullptr;
 
         while (current != NULL) {
             next = current->next;
@@ -164,7 +178,10 @@ int main() {
     ll->delfirst();
     ll->print();
     ll->dellast();
+
+    student *s4 = new student("D", 23);
+    ll->add(s4);
+    ll->deleteNode(0);
     ll->print();
-    ll->deleteNode(1);
-    ll->print();
+    delete ll;
 }
